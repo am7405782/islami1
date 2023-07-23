@@ -1,0 +1,112 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:islami_app/Utls/Color.dart';
+
+class sebha extends StatefulWidget {
+  @override
+  State<sebha> createState() => _sebhaState();
+}
+
+class _sebhaState extends State<sebha> {
+  int counter = 1;
+  List<String> sedhacountent = [
+    "سبحان الله",
+    "الحمد لله",
+    "الله اكبر",
+  ];
+  int index = 0;
+  double _rotationAngle = 0.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Transform.rotate(
+              angle: _rotationAngle * (3.14 / 180),
+              child: Image.asset("assets/images/Group 10.png"),
+            ),
+            Text(
+              "The number of praises",
+              style: GoogleFonts.elMessiri(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            MaterialButton(
+              onPressed: () {
+                counter++;
+                _rotationAngle += 4.6;
+                setState(() {});
+                if (counter == 31) {
+                  return setState(() {
+                    counter = 0;
+                    if (index < 2) {
+                      index++;
+                    } else {
+                      index = 0;
+                    }
+                  });
+                  ;
+                }
+                ;
+              },
+              child: Container(
+                width: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: primaryColor,
+                ),
+                child: Center(
+                  child: Text(
+                    "${counter}",
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontSize: 50,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: primaryColor,
+                ),
+                child: Center(
+                  child: Text(
+                    "${sedhacountent[index]}",
+                    style: GoogleFonts.elMessiri(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void onpress() {
+    return setState(() {
+      counter++;
+      _rotationAngle += 45.0;
+
+      if (counter == 31) {
+        return setState(() {
+          counter = 0;
+          index++;
+        });
+      }
+    });
+  }
+}
