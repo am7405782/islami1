@@ -22,7 +22,7 @@ class _SuranContentState extends State<SuranContent> {
       ReadFile(arg.index);
     }
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xff707070),
       appBar: AppBar(
         title: Center(
           child: Text(
@@ -38,30 +38,35 @@ class _SuranContentState extends State<SuranContent> {
           color: primaryColor,
         ),
       ),
-      body: ListView.separated(
-        itemBuilder: (context, index) {
-          return Directionality(
-            textDirection: TextDirection.rtl,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  Verses[index],
-                  style: TextStyle(
-                    fontSize: 20,
+      body: Card(
+        color: Colors.white,
+        margin: EdgeInsets.all(20),
+        elevation: 0,
+        child: ListView.separated(
+          itemBuilder: (context, index) {
+            return Directionality(
+              textDirection: TextDirection.rtl,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Text(
+                    Verses[index],
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
-            ),
-          );
-        },
-        separatorBuilder: (context, index) => Divider(
-          color: primaryColor,
-          thickness: 1,
-          endIndent: 40,
-          indent: 40,
+            );
+          },
+          separatorBuilder: (context, index) => Divider(
+            color: primaryColor,
+            thickness: 1,
+            endIndent: 40,
+            indent: 40,
+          ),
+          itemCount: Verses.length,
         ),
-        itemCount: Verses.length,
       ),
     );
   }
