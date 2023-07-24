@@ -138,7 +138,17 @@ class Quran_Screen extends StatelessWidget {
           ),
           Text(
             "SoraName",
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(context).colorScheme.brightness == Brightness.dark
+                ? GoogleFonts.elMessiri(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  )
+                : GoogleFonts.elMessiri(
+                    fontSize: 25,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
           ),
           Divider(
             color: primaryColor,

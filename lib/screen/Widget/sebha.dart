@@ -27,7 +27,10 @@ class _sebhaState extends State<sebha> {
           children: [
             Transform.rotate(
               angle: _rotationAngle * (3.14 / 180),
-              child: Image.asset("assets/images/Group 10.png"),
+              child: Image.asset(
+                  Theme.of(context).colorScheme.brightness == Brightness.light
+                      ? "assets/images/Group 10.png"
+                      : "assets/images/Group 11.png"),
             ),
             Text(
               "The number of praises",
@@ -58,13 +61,19 @@ class _sebhaState extends State<sebha> {
                 width: 100,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
-                  color: primaryColor,
+                  color: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? primaryColor
+                      : Colors.white10,
                 ),
                 child: Center(
                   child: Text(
                     "${counter}",
                     style: TextStyle(
-                      color: Colors.black87,
+                      color: Theme.of(context).colorScheme.brightness ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
                       fontSize: 50,
                     ),
                   ),
@@ -77,15 +86,22 @@ class _sebhaState extends State<sebha> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: primaryColor,
+                  color: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? primaryColor
+                      : sceond,
                 ),
                 child: Center(
                   child: Text(
                     "${sedhacountent[index]}",
                     style: GoogleFonts.elMessiri(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.brightness ==
+                              Brightness.light
+                          ? Colors.black
+                          : Colors.white,
+                    ),
                   ),
                 ),
               ),

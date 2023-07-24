@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Utls/Color.dart';
+
+import 'HadithContent.dart';
+import 'hadithModel.dart';
 
 class hedith extends StatefulWidget {
   const hedith({Key? key}) : super(key: key);
@@ -10,8 +14,13 @@ class hedith extends StatefulWidget {
 }
 
 class _hedithState extends State<hedith> {
+  List<HadethModel> AllAhadith = [];
+
   @override
   Widget build(BuildContext context) {
+    if (AllAhadith.isEmpty) {
+      loadFileHadith();
+    }
     return Scaffold(
       body: Column(
         children: [
@@ -25,7 +34,10 @@ class _hedithState extends State<hedith> {
             "Hadith",
             style: GoogleFonts.elMessiri(
               fontSize: 25,
-              color: Colors.black,
+              color:
+                  Theme.of(context).colorScheme.brightness == Brightness.light
+                      ? Colors.black
+                      : Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -39,11 +51,19 @@ class _hedithState extends State<hedith> {
             child: ListView.separated(
               itemBuilder: (context, index) {
                 return Center(
-                  child: Text(
-                    "data",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, HadihContent.roteName,
+                          arguments: AllAhadith[index]);
+                    },
+                    child: Center(
+                      child: Text(
+                        AllAhadith[index].title,
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 );
@@ -55,11 +75,38 @@ class _hedithState extends State<hedith> {
                   color: primaryColor,
                 );
               },
-              itemCount: 10,
+              itemCount: AllAhadith.length,
             ),
           ),
         ],
       ),
     );
+  }
+
+  void loadFileHadith() {
+    rootBundle.loadString("assets/files/ahadeth.txt").then((value) {
+      List<String> AhaditContent = value.split("#");
+      for (int i = 0; i < AhaditContent.length; i++) {
+        int lastindex = AhaditContent[i].trim().indexOf("\n");
+        String title = AhaditContent[i].trim().substring(0, lastindex);
+        print(title);
+        String content = AhaditContent[i].trim().substring(lastindex + 1);
+        HadethModel headthModel = HadethModel(title, content);
+        AllAhadith.add(headthModel);
+        setState(() {});
+      }
+      // for(int i=0;i<AhaditContent.length;i++){
+      //   List<String>lines=AhaditContent[i].trim().split("\n");
+      //   String title=lines[0];
+      //   lines.removeAt(0);
+      //   List<String>Countent=lines;
+      //   print(title);
+      //   AhadthModel headthModel= AhadthModel(title,Countent);
+      //   haditData.add(headthModel );
+      //
+      // }
+    }).catchError((error) {
+      print(error.toString());
+    });
   }
 }

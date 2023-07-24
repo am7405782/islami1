@@ -14,19 +14,25 @@ class radio extends StatelessWidget {
           Image.asset("assets/images/radio_image.png"),
           Text("Holy Quran broadcast",
               style: GoogleFonts.elMessiri(
-                color: Colors.black,
+                color:
+                    Theme.of(context).colorScheme.brightness == Brightness.light
+                        ? Colors.black
+                        : Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
               )),
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: 30,
+              horizontal: 40,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CircleAvatar(
-                  backgroundColor: primaryColor,
+                  backgroundColor: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? primaryColor
+                      : sceond,
                   radius: 30,
                   child: Icon(
                     Icons.arrow_circle_left_outlined,
@@ -34,7 +40,10 @@ class radio extends StatelessWidget {
                   ),
                 ),
                 CircleAvatar(
-                  backgroundColor: primaryColor,
+                  backgroundColor: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? primaryColor
+                      : sceond,
                   radius: 30,
                   child: Icon(
                     Icons.stop,
@@ -43,7 +52,10 @@ class radio extends StatelessWidget {
                   ),
                 ),
                 CircleAvatar(
-                  backgroundColor: primaryColor,
+                  backgroundColor: Theme.of(context).colorScheme.brightness ==
+                          Brightness.light
+                      ? primaryColor
+                      : sceond,
                   radius: 30,
                   child: Icon(
                     Icons.arrow_circle_right_outlined,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/Utls/MyThem.dart';
 
 import 'Widget/Quran/Quran.dart';
+import 'Widget/Setting.dart';
 import 'Widget/hedith/hadith.dart';
 import 'Widget/radio.dart';
 import 'Widget/sebha.dart';
@@ -20,6 +21,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     hedith(),
     sebha(),
     radio(),
+    Setting(),
   ];
 
   @override
@@ -29,7 +31,9 @@ class _Home_ScreenState extends State<Home_Screen> {
         SizedBox(
           width: double.infinity,
           child: Image.asset(
-            "assets/images/background.png",
+            Theme.of(context).colorScheme.brightness == Brightness.dark
+                ? "assets/images/background_image_dark.png"
+                : "assets/images/background.png",
             fit: BoxFit.fill,
           ),
         ),
@@ -54,7 +58,9 @@ class _Home_ScreenState extends State<Home_Screen> {
             items: [
               BottomNavigationBarItem(
                 icon: ImageIcon(
-                  AssetImage("assets/images/quran.png"),
+                  AssetImage(
+                    "assets/images/quran.png",
+                  ),
                 ),
                 label: "quran",
               ),
@@ -75,6 +81,10 @@ class _Home_ScreenState extends State<Home_Screen> {
                   AssetImage("assets/images/radio.png"),
                 ),
                 label: "radio",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: "Setting",
               ),
             ],
           ),

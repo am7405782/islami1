@@ -18,7 +18,11 @@ class _Splach_ScreenState extends State<Splach_Screen> {
       Navigator.pushNamed(context, Home_Screen.roteName);
     });
     return Scaffold(
-      body: Image.asset("assets/images/splash_light.png"),
+      body: Image.asset(
+        Theme.of(context).colorScheme.brightness == Brightness.dark
+            ? "assets/images/splash_dark.png"
+            : "assets/images/splash_light.png",
+      ),
     );
   }
 }
