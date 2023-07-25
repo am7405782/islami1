@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Utls/Color.dart';
 import 'package:islami_app/screen/Widget/Quran/SuraModel.dart';
@@ -137,7 +138,7 @@ class Quran_Screen extends StatelessWidget {
             thickness: 3,
           ),
           Text(
-            "SoraName",
+            AppLocalizations.of(context)!.suraName,
             style: Theme.of(context).colorScheme.brightness == Brightness.dark
                 ? GoogleFonts.elMessiri(
                     fontSize: 25,

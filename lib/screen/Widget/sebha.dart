@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Utls/Color.dart';
 
@@ -33,7 +34,7 @@ class _sebhaState extends State<sebha> {
                       : "assets/images/Group 11.png"),
             ),
             Text(
-              "The number of praises",
+              AppLocalizations.of(context)!.thenumberpraises,
               style: GoogleFonts.elMessiri(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,

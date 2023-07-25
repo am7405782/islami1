@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/Utls/MyThem.dart';
 
 import 'Widget/Quran/Quran.dart';
@@ -41,7 +42,7 @@ class _Home_ScreenState extends State<Home_Screen> {
           appBar: AppBar(
             title: Center(
               child: Text(
-                "islami",
+                AppLocalizations.of(context)!.appTitle,
                 style: MyThemData.lightThem.textTheme.bodyLarge,
               ),
             ),
@@ -62,29 +63,29 @@ class _Home_ScreenState extends State<Home_Screen> {
                     "assets/images/quran.png",
                   ),
                 ),
-                label: "quran",
+                label: AppLocalizations.of(context)!.quran,
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage("assets/images/hedith_icon.png"),
                 ),
-                label: "hedith",
+                label: AppLocalizations.of(context)!.ahadeth,
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage("assets/images/sebha_icon.png"),
                 ),
-                label: "sebha",
+                label: AppLocalizations.of(context)!.sebha,
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage("assets/images/radio.png"),
                 ),
-                label: "radio",
+                label: AppLocalizations.of(context)!.radio,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                label: "Setting",
+                label: AppLocalizations.of(context)!.setting,
               ),
             ],
           ),

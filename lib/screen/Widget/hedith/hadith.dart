@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami_app/Utls/Color.dart';
 
@@ -31,7 +32,7 @@ class _hedithState extends State<hedith> {
             color: primaryColor,
           ),
           Text(
-            "Hadith",
+            AppLocalizations.of(context)!.ahadeth,
             style: GoogleFonts.elMessiri(
               fontSize: 25,
               color:

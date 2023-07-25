@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:islami_app/screen/Home.dart';
 import 'package:islami_app/screen/SplachScreen.dart';
 import 'package:islami_app/screen/Widget/Quran/SuranContent.dart';
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
+
     return MaterialApp(
       title: "ialamiApp",
       debugShowCheckedModeBanner: false,
@@ -32,6 +35,17 @@ class MyApp extends StatelessWidget {
       theme: MyThemData.lightThem,
       darkTheme: MyThemData.darkTheam,
       themeMode: provider.themeMode,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en'), // English
+        Locale('ar'),
+      ],
+      locale: Locale(provider.Language),
     );
   }
 }

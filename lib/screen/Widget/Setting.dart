@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../Utls/Color.dart';
+import '../../Utls/ShowLaguebootonSheet.dart';
 import 'ShowButoonSheet.dart';
 
 class Setting extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SettingState extends State<Setting> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 100),
           Text(
             "Theam",
             style: GoogleFonts.elMessiri(
@@ -53,6 +54,38 @@ class _SettingState extends State<Setting> {
               ),
             ),
           ),
+          SizedBox(height: 100),
+          Text(
+            "MyLanguage:",
+            style: GoogleFonts.elMessiri(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 20),
+          InkWell(
+            onTap: () {
+              return ShowlangageSheet();
+            },
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                border:
+                    Border.all(color: primaryColor, style: BorderStyle.solid),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  "Aradic",
+                  style: GoogleFonts.elMessiri(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -62,6 +95,13 @@ class _SettingState extends State<Setting> {
     showModalBottomSheet(
       context: context,
       builder: (context) => ShowButoonSheet(),
+    );
+  }
+
+  void ShowlangageSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => ShowLanguageShow(),
     );
   }
 }
